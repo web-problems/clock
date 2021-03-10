@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Clock</title>
+	<style>
+		*{margin: 0; padding: 0; box-sizing: border-box;}
+		body{
+			width: 100%;
+			height: 100vh;
+			background-color: #dde7ea;
+			display: grid;
+			place-items: center;
+			text-align: center;
+		}
+		.clock{
+			width: 250px;
+			height: 250px;
+			background-color: #dde1e7;
+			box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px #33333373;
+			border-radius: 50%;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.clock::before{
+			position: absolute;
+			content: "";
+			width: 220px;
+			height: 220px;
+			background-color: #dde1e7;
+			box-shadow: inset -3px -3px 7px #ffffff73, inset 3px 3px 5px #33333373;
+			border-radius: 50%;
+		}
+		.clock::after {
+		    position: absolute;
+		    content: "";
+		    width: 120px;
+		    height: 120px;
+		    background-color: #dde1e7;
+		    box-shadow: inset -1px -1px 5px #ffffff73, inset 1px 1px 3px #ffffff73;
+		    border-radius: 50%;
+		}
+		.clock .clock_center{
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			background-color: greenyellow;
+			z-index: 3;
+			border-radius: 50%;
+		}
+		.clock .clock_center_2{
+			position: absolute;
+			width: 10px;
+			height: 10px;
+			background-color: black;
+			z-index: 5;
+			border-radius: 50%;
+		}
+		.clock .time_table span{
+			position: absolute;
+			width: 1px;
+			height: 5px;
+			background-color: #000;
+			z-index: 20
+		}
+		.clock .time_table span:nth-child(1){
+			transform: rotate(30deg) translateY(-100px);
+		}
+		.clock .time_table span:nth-child(2){
+			transform: rotate(60deg) translateY(-100px);
+		}
+		.clock .time_table span:nth-child(3){
+			transform: rotate(90deg) translateY(-100px);
+			background-color: green;
+		}
+		.clock .time_table span:nth-child(4){
+			transform: rotate(120deg) translateY(-100px);
+		}
+		.clock .time_table span:nth-child(5){
+			transform: rotate(150deg) translateY(-100px);
+		}
+		.clock .time_table span:nth-child(6){
+			transform: rotate(180deg) translateY(-100px);
+			background-color: green;
+		}
+		.clock .time_table span:nth-child(7){
+			transform: rotate(210deg) translateY(-100px);
+		}
+		.clock .time_table span:nth-child(8){
+			transform: rotate(240deg) translateY(-100px);
+		}
+		.clock .time_table span:nth-child(9){
+			transform: rotate(270deg) translateY(-100px);
+			background-color: green;
+		}
+		.clock .time_table span:nth-child(10){
+			transform: rotate(300deg) translateY(-100px);
+		}
+		.clock .time_table span:nth-child(11){
+			transform: rotate(330deg) translateY(-100px);
+		}
+		.clock .time_table span:nth-child(12){
+			transform: rotate(360deg) translateY(-100px);
+			background-color: green;
+		}
+		.sec-hand, .min-hand, .hr-hand{
+			position: absolute;
+		}
+		.sec-hand, .sec{
+			height: 180px;
+			width: 180px;
+			z-index: 6;
+			
+		}
+		.min-hand, .min{
+			height: 140px;
+			width: 140px;
+			z-index: 5;
+		}
+		.hr-hand, .hr{
+			height: 110px;
+			width: 110px;
+			z-index: 4;
+		}
+		.sec, .min, .hr{
+			display: flex;
+			justify-content: center;
+			position: absolute;
+		}
+		.sec::before{
+			position: absolute;
+			content: "";
+			height: 110px;
+			width: 4px;
+			background: green;
+		}
+		.sec::after{
+			position: absolute;
+			content: "";
+			height: 35px;
+			width: 6px;
+			background: gray;
+			top: 105px;
+			border-radius: 50px;
+		}
+		.min::before{
+			position: absolute;
+			content: "";
+			width: 3px;
+			top: -15px;
+			border-left: 5px solid transparent;
+			border-right: 5px solid transparent;
+			border-bottom: 60px solid black;
+		}
+		.min::after{
+			position: absolute;
+			content: "";
+			width: 5px;
+			top: 40px;
+			border-left: 2px solid transparent;
+			border-right: 2px solid transparent;
+			border-top: 30px solid black;
+		}
+		.hr::before{
+			position: absolute;
+			content: "";
+			width: 1px;
+			border-left: 5px solid transparent;
+			border-right: 5px solid transparent;
+			border-bottom: 40px solid yellow;
+		}
+		.hr::after{
+			position: absolute;
+			content: "";
+			width: 3px;
+			top: 30px;
+			border-left: 2px solid transparent;
+			border-right: 2px solid transparent;
+			border-top: 22px solid yellow;
+		}
+	</style>
+</head>
+<body>
+	<div class="clock">
+		<div class="clock_center"></div>
+		<div class="clock_center_2"></div>
+		<div class="time_table">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<div class="sec-hand">
+			<span class="sec"></span>
+		</div>
+		<div class="min-hand">
+			<span class="min"></span>
+		</div>
+		<div class="hr-hand">
+			<span class="hr"></span>
+		</div>
+	</div>
+
+	<script>
+		const sec = document.querySelector('.sec');
+		const min = document.querySelector('.min');
+		const hr = document.querySelector('.hr');
+
+		setInterval(function(){
+			let time = new Date();
+			let second = time.getSeconds()*6;
+			let minute = time.getMinutes()*6;
+			let hour = time.getHours()*30;
+
+			sec.style.transform = `rotateZ(${second}deg)`;
+			min.style.transform = `rotateZ(${minute}deg)`;
+			hr.style.transform = `rotateZ(${hour+(minute/12)}deg)`;
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
